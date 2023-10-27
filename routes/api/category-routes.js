@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
-
+//Get all categories
 router.get('/', async (req, res) => {
   try {
     const getAllCategories = await Category.findAll({
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Get a single category
 router.get('/:id', async (req, res) => {
   try {
     const getSingleCategory = await Category.findByPk(req.params.id, {
@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Add a new category
 router.post('/', async (req, res) => {
   try {
     const createNewCategory = await Category.create(req.body);
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Update a category
 router.put('/:id', async (req, res) => {
   try {
     const updateCategory = await Category.update(req.body, {
@@ -54,7 +54,7 @@ router.put('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Delete a category
 router.delete('/:id', async (req, res) => {
   try {
     const deleteCategory = await Category.destroy({
